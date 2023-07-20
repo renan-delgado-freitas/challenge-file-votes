@@ -1,15 +1,15 @@
 import os
 
 
-def read_file(arquivo='/home/renan/src/in/entrada.dat'):
+def ler_arquivos(arquivo='/home/renan/data/in/entrada.dat'):
     dados = []
-    with open(arquivo, 'r') as file:
-        for line in file:
-            dados.append(line.strip())
-    return dados
+    with open(arquivo, 'r') as arquivo:
+        for linha in arquivo:
+            dados.append(linha.strip())
+        return dados
 
 
-def processar_dados(dados):
+def filtrar_dados(dados):
     clientes = []
     vendedores = []
     vendas = {}
@@ -23,13 +23,10 @@ def processar_dados(dados):
         elif item[0] == '003':
             venda_id = item[1]
             venda_items = item[2].replace('[', '').replace(']', '').split(',')
-            total_venda = sum(float(item.split('-')[1]) * float(item.split('-')[2]) for item in venda_items)
-            vendas[venda_id] = total_venda
-
+            venda_total = sum(float(item.split('-')[1]) * float(item.split('-')[2]) for item in venda_items)
+            vendas[venda_id] = venda_total
     return clientes, vendedores, vendas
 
 
 if __name__ == '__main__':
-    print(processar_dados(read_file()))
-
-
+    print(filtrar_dados(ler_arquivos()))
