@@ -32,7 +32,7 @@ O seguinte é um exemplo dos dados que o sistema deve ser capaz de ler.
 - O pior vendedor
 - O sistema deve estar funcionando o tempo todo.
 - Todos os arquivos novos estar disponível, tudo deve ser executado
-- Seu código deve ser escrito em Java.
+- Seu código deve ser escrito em Python.
 - Você tem total liberdade para utilizar google com o que você precisa. Sinta-se à vontade para escolher qualquer biblioteca externa se for necessário. 
 
 ##### Critérios de Avaliação
