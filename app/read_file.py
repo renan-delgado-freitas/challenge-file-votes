@@ -33,7 +33,7 @@ async def filter_data(data):
 async def create_report(seller, customers, sales):
     worst_seller = sales.get(min(sales, key=sales.get))[1]
 
-    with open("/home/renan/PycharmProjects/challenge-file-votes/out/report.done.dat", 'w') as file:
+    with open("/home/renan/PycharmProjects/data_challenge/out/report.done.dat", 'w') as file:
         file.write(f'Quantidade de vendedor no arquivo de entrada: {len(seller)}\n')
         file.write(f'Quantidade de clientes no arquivo de entrada: {len(customers)}\n')
         file.write(f'ID da venda mais cara: {max(sales, key=sales.get)}\n')
