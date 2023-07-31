@@ -1,15 +1,12 @@
-import asyncio
-
-
-async def read_file(file="/home/renan/data/in/entrada.dat"):
+def read_file(file="in/entrada.dat"):
     data = []
     with open(file, 'r') as file:
         for line in file:
             data.append(line.strip())
-        return data
+    return data
 
 
-async def filter_data(data):
+def filter_data(data):
     sellers = []
     customers = []
     sales = {}
@@ -30,10 +27,10 @@ async def filter_data(data):
     return sellers, customers, sales
 
 
-async def create_report(seller, customers, sales):
+def create_report(seller, customers, sales):
     worst_seller = sales.get(min(sales, key=sales.get))[1]
 
-    with open("/home/renan/PycharmProjects/challenge-file-votes/out/report.done.dat", 'w') as file:
+    with open("out/report.done.dat", 'w') as file:
         file.write(f'Quantidade de vendedor no arquivo de entrada: {len(seller)}\n')
         file.write(f'Quantidade de clientes no arquivo de entrada: {len(customers)}\n')
         file.write(f'ID da venda mais cara: {max(sales, key=sales.get)}\n')
@@ -41,23 +38,6 @@ async def create_report(seller, customers, sales):
 
 
 # Funcao criada apenas para testar o retorno do codigo
-async def sales_per_salesman(sales):
+def sales_per_salesman(sales):
     for seller in sales:
         print(seller, ": ", sales[seller])
-
-
-async def main():
-    while True:
-        data = await read_file()
-        sellers, customers, sales = await filter_data(data)
-        await create_report(sellers, customers, sales)
-        await sales_per_salesman(sales)
-        print(35 * '-')
-        await asyncio.sleep(3)
-
-
-if __name__ == '__main__':
-    asyncio.run(main())
-
-
-
