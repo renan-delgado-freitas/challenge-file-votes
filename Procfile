@@ -1,1 +1,0 @@
-web: gunicorn app/read_file:app

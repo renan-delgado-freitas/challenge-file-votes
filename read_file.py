@@ -1,4 +1,13 @@
+import os
+
+
 def read_file(file="data/in/entrada.dat"):
+    if not os.path.exists(file):
+        raise ValueError("Invalid file format")
+
+    if not file.lower().endswith('.dat'):
+        return []
+
     data = []
     with open(file, 'r') as file:
         for line in file:
@@ -28,6 +37,7 @@ def filter_data(data):
 
 
 def create_report(seller, customers, sales):
+
     worst_seller = sales.get(min(sales, key=sales.get))[1]
 
     with open("data/out/report.done.dat", 'w') as file:
