@@ -1,4 +1,4 @@
-def read_file(file="in/entrada.dat"):
+def read_file(file="data/in/entrada.dat"):
     data = []
     with open(file, 'r') as file:
         for line in file:
@@ -30,7 +30,7 @@ def filter_data(data):
 def create_report(seller, customers, sales):
     worst_seller = sales.get(min(sales, key=sales.get))[1]
 
-    with open("out/report.done.dat", 'w') as file:
+    with open("data/out/report.done.dat", 'w') as file:
         file.write(f'Quantidade de vendedor no arquivo de entrada: {len(seller)}\n')
         file.write(f'Quantidade de clientes no arquivo de entrada: {len(customers)}\n')
         file.write(f'ID da venda mais cara: {max(sales, key=sales.get)}\n')
